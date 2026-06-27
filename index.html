@@ -3,63 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infinite Client</title>
+    <title>Infinite Client | Next-Gen Anarchy Utility Mod</title>
     <style>
+        :root {
+            --bg-main: #0a0a0d;
+            --bg-card: #111119;
+            --bg-nav: #161622;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --border: #1f1f2e;
+        }
+
         body {
-            background-color: #0d0d11;
-            color: #e2e8f0;
+            background-color: var(--bg-main);
+            color: var(--text-main);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--bg-nav);
+            border-bottom: 1px solid var(--border);
+            padding: 20px;
             text-align: center;
-        }
-        .container {
-            max-width: 600px;
-            padding: 40px;
-            background: #16161f;
-            border-radius: 12px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-            border: 1px solid #23232f;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: #ffffff;
+            font-weight: bold;
+            font-size: 1.2rem;
             letter-spacing: 1px;
         }
-        p {
-            color: #94a3b8;
-            font-size: 1.1rem;
-            line-height: 1.6;
+
+        header span {
+            color: var(--accent-purple);
+        }
+
+        .hero {
+            max-width: 900px;
+            margin: 60px auto;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+
+        .badge-container {
             margin-bottom: 30px;
         }
-        .btn {
+
+        .badge {
+            background: #1e1b4b;
+            color: #c7d2fe;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid #3730a3;
+        }
+
+        .btn-download {
             display: inline-block;
-            background: #ffffff;
-            color: #0d0d11;
-            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: white;
+            padding: 14px 40px;
             font-weight: 600;
             text-decoration: none;
-            border-radius: 6px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
             transition: all 0.2s ease;
         }
-        .btn:hover {
-            background: #cbd5e1;
+
+        .btn-download:hover {
             transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(139, 92, 246, 0.5);
+        }
+
+        .section {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            border-left: 4px solid var(--accent-purple);
+            padding-left: 15px;
+            margin-bottom: 25px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.5rem; }
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #ffffff;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card p {
+            margin-bottom: 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .req-list, .step-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .req-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .req-list li span {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        code {
+            background: #181825;
+            padding: 3px 6px;
+            border-radius: 4px;
+            color: #f43f5e;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 0.9rem;
+        }
+
+        .code-block {
+            background: #13131c;
+            border: 1px solid var(--border);
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: Consolas, Monaco, monospace;
+            color: #a7f3d0;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #475569;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border);
+            margin-top: 80px;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>INFINITE</h1>
-        <p>Welcome to the official page for the Infinite client. A powerful, optimized modification built to elevate your gameplay performance.</p>
-        <!-- Replace '#' with the actual download link when ready -->
-        <a href="#" class="btn">Download Client</a>
+    <header>
+        1O1C<span>.ORG</span> NETWORK ASSETS
+    </header>
+
+    <div class="hero">
+        <div class="badge-container">
+            <span class="badge">Minecraft 1.21.11 Anarchy</span>
+        </div>
+        <h1>INFINITE CLIENT</h1>
+        <p>Next-generation utility mod built on Fabric, leveraging Java 25 Project Panama and Rust for raw rendering performance and memory safety.</p>
+        <!-- Paste the actual download link in the href below when ready -->
+        <a href="#" class="btn-download">Download v2.3.0 (Latest)</a>
     </div>
+
+    <!-- KEY FEATURES -->
+    <div class="section">
+        <h2>Key Features</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>⚡️ Native Power</h3>
+                <p>Core rendering engines and complex client calculations are processed directly natively via Rust, minimizing stuttering and optimizing execution frame rates.</p>
+            </div>
+            <div class="card">
+                <h3>🏗️ Project Xross Integration</h3>
+                <p>Features zero-overhead, thread-safe memory mapping bridges between the JVM ecosystem (Kotlin/Java) and compiled system code components.</p>
+            </div>
+            <div class="card">
+                <h3>🎨 NativeMeshEngine</h3>
+                <p>High-speed, backend system mesh processing structures designed explicitly to run advanced visuals like entity ESP and custom environment modules seamlessly.</p>
+            </div>
+            <div class="card">
+                <h3>🛡️ Modernized Toolchain</h3>
+                <p>Engineered aggressively utilizing modern developer tech boundaries: Java 25 EA, structural Kotlin workflows, and memory-safe Rust logic profiles.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- TECHNICAL REQUIREMENTS & SPECS -->
+    <div class="section">
+        <div class="grid">
+            <div>
+                <h2>System Requirements</h2>
+                <ul class="req-list">
+                    <li>Target Minecraft Version <span>1.21.11</span></li>
+                    <li>Minimum Fabric Loader <span>0.18.2+</span></li>
+                    <li>Mandatory Java Runtime <span>JDK 25 (EA Profile)</span></li>
+                    <li>Mod Dependencies <span>Fabric API & Fabric Kotlin</span></li>
+                </ul>
+            </div>
+            <div>
+                <h2>Under the Hood</h2>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">
+                    Infinite Client abandons outdated JNI standards completely. By implementing the modern <strong>Foreign Function & Memory API (Project Panama)</strong>, native execution buffers communicate straight with underlying machine hardware pipelines without cross-environment penalties.
+                </p>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">
+                    Developed under structural architectures by <em>The-Infinitys</em>, <em>rxnd0mdev</em>, and <em>NekomiRyan</em>.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUICK QUICKSTART INSTALLATION -->
+    <div class="section">
+        <h2>Quick Start Installation</h2>
+        <div class="card">
+            <p>1. Ensure your launcher is configured to boot running verified <strong>JDK 25 Early Access</strong> bin layouts.</p>
+            <p style="margin-top: 10px;">2. Move your downloaded <code>infinite-client.jar</code> alongside matching fabric essentials inside your working local mods directory.</p>
+            <p style="margin-top: 10px;">3. You <strong>MUST</strong> pass the following native-access environment parameters inside your custom launcher setup config profile to authorize Panama FFM access:</p>
+            <div class="code-block">
+                --enable-native-access=ALL-UNNAMED -Dforeign.restricted=permit
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 1O1C Infrastructure. Managed client deployment space. Licensed globally under standard MIT terms.
+    </footer>
 
 </body>
 </html>
